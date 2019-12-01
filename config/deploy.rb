@@ -1,7 +1,7 @@
 require 'mina/rails'
 require 'mina/git'
 # require 'mina/rbenv'  # for rbenv support. (https://rbenv.org)
-# require 'mina/rvm'    # for rvm support. (https://rvm.io)
+require 'mina/rvm'    # for rvm support. (https://rvm.io)
 
 # Basic settings:
 #   domain       - The hostname to SSH to.
@@ -11,6 +11,7 @@ require 'mina/git'
 
 set :application_name, 'flip-tech'
 set :domain, '40.122.109.147'
+set :rvm_use_path, '/usr/local/rvm/scripts/rvm'
 set :deploy_to, '/home/parthchugh/apps/flip-tech'
 set :execution_mode, :system
 set :username, 'parthchugh'
@@ -53,6 +54,7 @@ task :deploy do
   deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
+    invoke :"rvm:use", "ruby-2.6.5"
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
