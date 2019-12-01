@@ -81,5 +81,6 @@ test:
 production:
   <<: *default
   database: flip_tech_production
-  username: flip_tech
-  password: <%= ENV['FLIP_TECH_DATABASE_PASSWORD'] %>
+  username: osn
+  password: gpasswd
+  host: 40.122.109.147

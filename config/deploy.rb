@@ -10,11 +10,12 @@ require 'mina/git'
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :application_name, 'flip-tech'
-set :user, "osheen"
-set :deploy_to, `/home/#{fetch(:user)}/apps/#{fetch(:application_name)}`
+set :domain, '40.122.109.147'
+set :deploy_to, '/home/parthchugh/apps/flip-tech'
+set :execution_mode, :system
+set :username, 'parthchugh'
 set :repository, 'https://github.com/ParthChugh/flip-tech'
 set :branch, 'master'
-set :keep_releases, 2
 
 # Optional settings:
 #   set :user, 'foobar'          # Username in the server to SSH to.
@@ -48,6 +49,7 @@ desc "Deploys the current version to the server."
 task :deploy do
   # uncomment this line to make sure you pushed your local branch to the remote origin
   # invoke :'git:ensure_pushed'
+  
   deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
